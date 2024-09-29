@@ -1,5 +1,6 @@
 name = "cloudflare-docker-proxy"
-compatibility_date = "2023-12-01"
+main = "src/index.ts"
+compatibility_date = "2024-09-05"
 
 [dev]
 ip = "0.0.0.0"
@@ -12,15 +13,15 @@ TARGET_UPSTREAM = "https://registry-1.docker.io"
 
 [env.production]
 name = "cloudflare-docker-proxy"
-# routes = [
-#   { pattern = "docker.libcuda.so", custom_domain = true },
-#   { pattern = "quay.libcuda.so", custom_domain = true },
-#   { pattern = "gcr.libcuda.so", custom_domain = true },
-#   { pattern = "k8s-gcr.libcuda.so", custom_domain = true },
-#   { pattern = "k8s.libcuda.so", custom_domain = true },
-#   { pattern = "ghcr.libcuda.so", custom_domain = true },
-#   { pattern = "cloudsmith.libcuda.so", custom_domain = true },
-# ]
+routes = [
+  { pattern = "dockerhub.example.com", custom_domain = true },
+  { pattern = "quay.example.com", custom_domain = true },
+  { pattern = "gcr.example.com", custom_domain = true },
+  { pattern = "k8s-gcr.example.com", custom_domain = true },
+  { pattern = "k8s.example.com", custom_domain = true },
+  { pattern = "ghcr.example.com", custom_domain = true },
+  { pattern = "cloudsmith.example.com", custom_domain = true },
+]
 
 [env.production.vars]
 MODE = "production"
@@ -28,7 +29,7 @@ TARGET_UPSTREAM = ""
 
 [env.staging]
 name = "cloudflare-docker-proxy-staging"
-# route = { pattern = "docker-staging.libcuda.so", custom_domain = true }
+route = { pattern = "docker-staging.example.com", custom_domain = true }
 
 [env.staging.vars]
 MODE = "staging"
