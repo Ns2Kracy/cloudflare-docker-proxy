@@ -21,17 +21,17 @@ const dockerHub = 'https://registry-1.docker.io';
 
 const routes: Routes = {
   // production
-  'dockerhub.example.com': dockerHub,
-  'quay.example.com': 'https://quay.io',
-  'gcr.example.com': 'https://gcr.io',
-  'k8s-gcr.example.com': 'https://k8s.gcr.io',
-  'k8s.example.com': 'https://registry.k8s.io',
-  'ghcr.example.com': 'https://ghcr.io',
-  'cloudsmith.example.com': 'https://docker.cloudsmith.io',
-  'ecr.example.com': 'https://public.ecr.aws',
+  'dockerhub.ns2kracy.com': dockerHub,
+  'quay.ns2kracy.com': 'https://quay.io',
+  'gcr.ns2kracy.com': 'https://gcr.io',
+  'k8s-gcr.ns2kracy.com': 'https://k8s.gcr.io',
+  'k8s.ns2kracy.com': 'https://registry.k8s.io',
+  'ghcr.ns2kracy.com': 'https://ghcr.io',
+  'cloudsmith.ns2kracy.com': 'https://docker.cloudsmith.io',
+  'ecr.ns2kracy.com': 'https://public.ecr.aws',
 
   // staging
-  'docker-staging.example.com': dockerHub,
+  'docker-staging.ns2kracy.com': dockerHub,
 };
 
 export default {

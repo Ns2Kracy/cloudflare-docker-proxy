@@ -20,15 +20,15 @@ This project is a Cloudflare Workers-based image acceleration proxy, designed to
 
 2. **修改域名 / Update domain in configuration**
 
-   打开 `./src/index.ts` 文件，并将文件内的 `example.com` 替换为你自己的域名。
+   打开 `./src/index.ts` 文件，并将文件内的 `ns2kracy.com` 替换为你自己的域名。
 
-   Open the `./src/index.ts` file and replace `example.com` with your own domain name.
+   Open the `./src/index.ts` file and replace `ns2kracy.com` with your own domain name.
 
 3. **修改 wrangler.toml 配置 / Update `wrangler.toml` configuration**
 
-   编辑 `wrangler.toml` 文件，找到 `example.com` 并替换为你的域名。
+   编辑 `wrangler.toml` 文件，找到 `ns2kracy.com` 并替换为你的域名。
 
-   Edit the `wrangler.toml` file, locate `example.com`, and replace it with your domain name.
+   Edit the `wrangler.toml` file, locate `ns2kracy.com`, and replace it with your domain name.
 
 4. **安装 Wrangler / Install Wrangler**
 
@@ -66,9 +66,9 @@ This project is a Cloudflare Workers-based image acceleration proxy, designed to
 
 1. **域名替换 / Domain Replacement**
 
-   请确保正确替换 `example.com` 为你的实际域名，错误的域名配置将导致 Workers 无法正确代理请求。
+   请确保正确替换 `ns2kracy.com` 为你的实际域名，错误的域名配置将导致 Workers 无法正确代理请求。
 
-   Ensure that `example.com` is correctly replaced with your actual domain name. Incorrect domain configuration will cause Workers to fail in proxying requests.
+   Ensure that `ns2kracy.com` is correctly replaced with your actual domain name. Incorrect domain configuration will cause Workers to fail in proxying requests.
 
 2. **Cloudflare 账号 / Cloudflare Account**
 
