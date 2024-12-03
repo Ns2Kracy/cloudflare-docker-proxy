@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +12,7 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         .header {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: #fff;
@@ -19,6 +21,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: relative;
         }
+
         .github-link {
             position: absolute;
             top: 10px;
@@ -26,15 +29,18 @@
             color: #fff;
             text-decoration: none;
         }
+
         .github-icon {
             width: 32px;
             height: 32px;
             vertical-align: middle;
             transition: transform 0.3s ease;
         }
+
         .github-link:hover .github-icon {
             transform: scale(1.1);
         }
+
         .container {
             max-width: 900px;
             margin: 40px auto;
@@ -44,11 +50,13 @@
             border-radius: 12px;
             line-height: 1.6;
         }
+
         .content p {
             margin-bottom: 15px;
             font-size: 18px;
             color: #333;
         }
+
         .footer {
             text-align: center;
             padding: 20px 0;
@@ -56,6 +64,7 @@
             color: #fff;
             margin-top: 40px;
         }
+
         pre {
             background-color: #272822;
             color: #f8f8f2;
@@ -65,40 +74,49 @@
             margin-bottom: 20px;
             font-size: 16px;
         }
+
         code {
             font-family: 'Source Code Pro', monospace;
         }
+
         a {
             color: #4CAF50;
             text-decoration: none;
             font-weight: 600;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         @media (max-width: 600px) {
             .container {
                 margin: 20px;
                 padding: 15px;
             }
+
             .header {
                 padding: 15px 0;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-<div class="header">
-    <h1>镜像使用说明</h1>
-    <a href="https://github.com/Criogaid/cloudflare-docker-proxy" target="_blank" class="github-link">
-        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
-    </a>
-</div>
-<div class="container">
-    <div class="content">
-        <p>为了加速 Docker 镜像拉取，你可以使用以下命令设置 registry mirror:</p>
-        <pre><code id="registry-config">sudo tee /etc/docker/daemon.json &lt;&lt;EOF
+    <div class="header">
+        <h1>镜像使用说明</h1>
+        <a href="https://github.com/Ns2Kracy/cloudflare-docker-proxy" target="_blank" class="github-link">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub"
+                class="github-icon">
+        </a>
+    </div>
+    <div class="container">
+        <div class="content">
+            <p>为了加速 Docker 镜像拉取，你可以使用以下命令设置 registry mirror:</p>
+            <pre><code id="registry-config">sudo tee /etc/docker/daemon.json &lt;&lt;EOF
 {
     "registry-mirrors": ["https://{{host}}"]
 }
@@ -106,11 +124,11 @@ EOF
 # 配置完后需要重启 Docker 服务
 sudo systemctl restart docker
 </code></pre>
-        <p>使用该代理从不同的镜像仓库拉取镜像，请参考以下命令：</p>
-        <pre><code id="commands">
+            <p>使用该代理从不同的镜像仓库拉取镜像，请参考以下命令：</p>
+            <pre><code id="commands">
 # docker pull nginx:latest
-docker pull dockerhub.{{host}}/library/nginx:latest  # 拉取 Docker 官方镜像
-
+docker pull dockerproxy.{{host}}/library/nginx:latest  # 拉取 Docker 官方镜像
+<!--
 # docker pull quay.io/coreos/etcd:latest
 docker pull quay.{{host}}/coreos/etcd:latest  # 拉取 Quay 镜像
 
@@ -127,21 +145,22 @@ docker pull k8s.{{host}}/pause:latest  # 拉取 registry.k8s.io 镜像
 docker pull ghcr.{{host}}/github/super-linter:latest  # 拉取 GitHub 容器镜像
 
 # docker pull docker.cloudsmith.io/public/repo/image:latest
-docker pull cloudsmith.{{host}}/public/repo/image:latest  # 拉取 Cloudsmith 镜像
+docker pull cloudsmith.{{host}}/public/repo/image:latest  # 拉取 Cloudsmith 镜像 -->
 </code></pre>
-        <p>为了避免 Worker 用量耗尽，你可以手动 pull 镜像然后 re-tag 之后 push 至本地镜像仓库。</p>
+            <p>为了避免 Worker 用量耗尽，你可以手动 pull 镜像然后 re-tag 之后 push 至本地镜像仓库。</p>
+        </div>
     </div>
-</div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const host = window.location.hostname;
-        const mainDomain = host.split('.').slice(-2).join('.');
-        const registryConfigElement = document.getElementById('registry-config');
-        const commandsElement = document.getElementById('commands');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const host = window.location.hostname;
+            const mainDomain = host.split('.').slice(-2).join('.');
+            const registryConfigElement = document.getElementById('registry-config');
+            const commandsElement = document.getElementById('commands');
 
-        registryConfigElement.innerHTML = registryConfigElement.innerHTML.replace(/{{host}}/g, host);
-        commandsElement.innerHTML = commandsElement.innerHTML.replace(/{{host}}/g, mainDomain);
-    });
-</script>
+            registryConfigElement.innerHTML = registryConfigElement.innerHTML.replace(/{{host}}/g, host);
+            commandsElement.innerHTML = commandsElement.innerHTML.replace(/{{host}}/g, mainDomain);
+        });
+    </script>
 </body>
+
 </html>

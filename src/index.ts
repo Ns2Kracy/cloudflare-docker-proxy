@@ -21,7 +21,7 @@ const dockerHub = 'https://registry-1.docker.io';
 
 const routes: Routes = {
   // production
-  'docker.ns2kracy.com': dockerHub,
+  'dockerproxy.ns2kracy.com': dockerHub,
   'quay.ns2kracy.com': 'https://quay.io',
   'gcr.ns2kracy.com': 'https://gcr.io',
   'k8s-gcr.ns2kracy.com': 'https://k8s.gcr.io',
